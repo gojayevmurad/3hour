@@ -1,0 +1,514 @@
+// MIXINS
+@import "mixins";
+
+// FONT RALEWAY
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Unna&display=swap");
+// FONT POPPINS
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Unna&display=swap");
+
+:root {
+  --font-primary: "Raleway", sans-serif;
+  --font-secondary: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  height: 100%;
+
+  // CONTAINER RESPONSIVE
+  @include desktop {
+    max-width: 1140px;
+  }
+
+  @include tablet {
+    max-width: 960px;
+  }
+
+  @include mobile {
+    max-width: 414px;
+  }
+
+  @include extra-small {
+    max-width: 540px;
+  }
+
+  @include extra-extra-small {
+    max-width: 100%;
+  }
+}
+
+// #region HEADER
+.header {
+  padding: 28px 16px;
+
+  @include tablet {
+    .container {
+      max-width: 1140px;
+    }
+  }
+
+  &--content {
+    @include d-flex(space-between);
+    position: relative;
+    .hamburger {
+      display: none;
+      position: absolute;
+      width: 30px;
+      height: 8px;
+      background-color: #000;
+      right: 0;
+      cursor: pointer;
+    }
+    .hamburger::after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 8px;
+      background-color: #000;
+      top: 10px
+    }
+    .hamburger::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 8px;
+        background-color: #000;
+        bottom: 10px
+    }
+
+    
+    
+
+    nav {
+      ul {
+        @include d-flex;
+        gap: 40px;
+        font-family: var(--font-secondary);
+
+        a {
+          border-bottom: 1px solid transparent;
+        }
+        a:hover {
+          border-bottom: 1px solid black;
+        }
+      }
+    }
+    @include tablet {
+      .hamburger {
+        display: block;
+      }
+      nav {
+        display: none;
+      }
+    }
+  }
+}
+
+// #endregion HEADER
+
+// #region ADS
+
+.ads {
+  background-color: #000;
+  height: 64px;
+  @include d-flex;
+  &--content {
+    @include d-flex;
+    flex-wrap: wrap;
+
+    gap: 10px;
+    h2,
+    a {
+      font-size: 16px;
+      font-family: var(--font-secondary);
+      color: white;
+
+      @include tablet {
+        font-size: 14px;
+      }
+    }
+
+    h2 {
+      font-weight: 400;
+    }
+    a {
+      font-weight: 700;
+      line-height: 0.8;
+      border-bottom: 1px solid white;
+    }
+  }
+}
+
+// #endregion ADS
+
+// #region intro
+
+.intro {
+  background-color: #451314;
+  height: 688px;
+  overflow: hidden;
+
+  @include tablet {
+    height: 758px;
+
+    &--content {
+      img {
+        width: 100% !important;
+        height: 100%;
+      }
+    }
+  }
+  @include mobile {
+    height: auto;
+  }
+
+  &--content {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 2fr;
+      row-gap: 100px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      @include mobile {
+        order: 2;
+      }
+    }
+    &-rightside {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      div {
+        position: absolute;
+        top: 35%;
+        left: 20%;
+
+        h1,
+        p {
+          color: white;
+          margin-bottom: 30px;
+        }
+        h1 {
+          font-family: var(--font-primary);
+          font-size: 48px;
+          font-weight: 400;
+        }
+        p {
+          font-family: var(--font-secondary);
+        }
+        button {
+          cursor: pointer;
+          font-size: 14px;
+          font-family: var(--font-secondary);
+          padding: 14px 32px;
+          border: none;
+          outline: none;
+        }
+
+        button:hover {
+          background-color: #ffffffd9;
+        }
+      }
+      @include mobile {
+        order: 1;
+      }
+    }
+  }
+}
+
+// #endregion intro
+// #region collection
+
+.collection {
+  padding: 150px 0;
+  &--content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 10px;
+    place-items: center;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      img {
+        width: 100%!important;
+      }
+
+
+      .collection--content__text{
+        order: 1;
+      }
+      
+      .img2{
+        order:2;
+      }
+      .img3{
+        order: 4;
+      }
+      .img1{
+        order: 3;
+      }
+
+
+    }
+
+    @include mobile{
+        row-gap: 40px
+    }
+
+    &__text {
+      @include d-flex(center, start, column);
+      gap: 30px;
+      h2 {
+        font-family: var(--font-primary);
+        font-size: 40px;
+        font-weight: 400;
+      }
+
+      p {
+        font-size: 16px;
+        font-family: var(--font-secondary);
+      }
+
+      button {
+        cursor: pointer;
+        padding: 16px 32px;
+        background-color: black;
+        color: white;
+        border: none;
+        outline: none;
+        transition: 0.3s;
+      }
+      button:hover {
+        background-color: #565656;
+      }
+    }
+
+    img {
+      object-fit: cover;
+      width: 264px;
+      height: 512px;
+    }
+  }
+}
+
+// #endregion collection
+
+// #region inspired
+
+.inspired {
+  background-image: url(../assets/images/inspired--bg.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 496px;
+  @include mobile{
+    height: 414px;
+  }
+  .container {
+    height: 100%;
+  }
+  &--content {
+    height: 100%;
+    @include d-flex;
+    h3 {
+      color: white;
+      font-size: 48px;
+      font-family: var(--font-primary);
+      font-weight: 400;
+      @include mobile{
+        font-size: 26px;
+      }
+    }
+  }
+}
+
+// #endregion inspired
+
+// #region categories
+
+.categories {
+  padding: 100px 0;
+  &--content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+
+    @include tablet{
+        grid-template-columns: 1fr
+    }
+
+    &__item {
+      @include d-flex(center, start, column);
+      gap: 20px;
+
+      
+
+      h3 {
+        font-size: 25px;
+        font-family: var(--font-primary);
+        font-weight: 500;
+      }
+
+      p {
+        font-family: var(--font-secondary);
+        font-size: 16px;
+      }
+
+      button {
+        padding: 16px 32px;
+        border: none;
+        outline: none;
+        background-color: #000;
+        cursor: pointer;
+        color: white;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background-color: #565656;
+      }
+    }
+    img {
+      width: 100%;
+    }
+  }
+}
+
+// #endregion categories
+
+// #region subscribe
+
+.subscribe {
+  background-image: url(../assets/images/subscribe-bg.png);
+  background-position: center;
+  padding: 80px 0;
+  background-repeat: no-repeat;
+  &--content {
+    @include d-flex(center, flex-start, column);
+    
+    p {
+      font-size: 40px;
+      font-family: var(--font-primary);
+      @include tablet{
+        font-size: 20px;
+      }
+    }
+    h2 {
+      font-size: 64px;
+      font-family: var(--font-primary);
+      width: 800px;
+      @include tablet{
+        font-size: 30px;
+        width: auto
+      }
+    }
+
+    form {
+      @include d-flex(center, start, column);
+      gap: 15px;
+      input {
+        padding: 16px 56px 16px 16px;
+        width: 500px;
+        outline: none;
+        border: none;
+        color: black;
+        font-family: var(--font-primary);
+        font-size: 15px;
+        @include tablet{
+            width: auto;
+        }
+      }
+      button {
+        cursor: pointer;
+        padding: 16px 32px;
+        background-color: black;
+        color: white;
+        border: none;
+        outline: none;
+        transition: 0.3s;
+      }
+      button:hover {
+        background-color: #565656;
+      }
+    }
+  }
+
+  * {
+    color: white;
+  }
+}
+
+// #endregion subscribe
+
+// #region footer
+
+.footer {
+  padding: 150px 0;
+  &--content {
+    @include d-flex(space-between, center);
+    @include mobile {
+      flex-direction: column;
+      gap: 40px;
+    }
+    &__nav {
+      ul {
+        @include d-flex(center, start, column);
+        gap: 30px;
+
+        li {
+          line-height: 0.8;
+          border-bottom: 1px solid #000;
+        }
+        a {
+          font-size: 16px;
+          font-family: var(--font-secondary);
+          color: #000;
+          line-height: 0.7;
+        }
+      }
+    }
+
+    &__support {
+      @include d-flex(start, flex-start, column);
+      gap: 40px;
+
+      h3 {
+        font-size: 28px;
+        font-family: var(--font-primary);
+        font-weight: 400;
+      }
+      p {
+        font-size: 16px;
+        border-bottom: 1px solid black;
+        line-height: 0.8;
+        a {
+          color: #000;
+          font-size: 16px;
+          font-family: var(--font-secondary);
+        }
+      }
+
+      div {
+        @include d-flex(start, flex-start);
+        gap: 15px;
+      }
+    }
+  }
+}
+
+// #endregion footer
