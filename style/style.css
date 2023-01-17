@@ -25,7 +25,7 @@
 }
 @media only screen and (max-width: 991px) {
   .container {
-    max-width: 960px;
+    max-width: 600px;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -156,6 +156,9 @@
   .intro--content img {
     width: 100% !important;
     height: 100%;
+  }
+  .intro .container {
+    width: 800px;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -293,6 +296,18 @@
      object-fit: cover;
   width: 264px;
   height: 512px;
+  filter: grayscale(1);
+  transition: 0.3s;
+  cursor: pointer;
+}
+@media only screen and (max-width: 991px) {
+  .collection--content img {
+    filter: grayscale(0);
+    width: 100%;
+  }
+}
+.collection--content img:hover {
+  filter: grayscale(0);
 }
 
 .inspired {

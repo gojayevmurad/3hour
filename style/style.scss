@@ -30,7 +30,7 @@
   }
 
   @include tablet {
-    max-width: 960px;
+    max-width: 600px;
   }
 
   @include mobile {
@@ -157,6 +157,8 @@
   height: 688px;
   overflow: hidden;
 
+
+
   @include tablet {
     height: 758px;
 
@@ -165,6 +167,9 @@
         width: 100% !important;
         height: 100%;
       }
+    }
+    .container{
+      width: 800px;
     }
   }
   @include mobile {
@@ -255,6 +260,7 @@
       
       .img2{
         order:2;
+
       }
       .img3{
         order: 4;
@@ -302,6 +308,16 @@
       object-fit: cover;
       width: 264px;
       height: 512px;
+      filter: grayscale(1);
+      transition: .3s;
+      cursor: pointer;
+      @include tablet{
+        filter: grayscale(0);
+        width: 100%;
+      }
+    }
+    img:hover{
+      filter: grayscale(0);
     }
   }
 }
